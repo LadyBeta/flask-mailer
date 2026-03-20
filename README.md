@@ -49,9 +49,10 @@ Amacı, yüzlerce müşteriye kişiselleştirilmiş e-posta kampanyalarını gü
 ### 4.CSV ile Müşteri Ekleme
 
 Çok sayıda müşteri CSV dosyası aracılığıyla eklenebilir.
-[Customer ](screenshots/import-csv.png)
+[Import CSV](screenshots/import-csv.png)
 
 ---
+
 
 ### 5. Mail Gönderimi
 - Kişiye özel veya toplu e-posta gönderimi yapılabilir.  

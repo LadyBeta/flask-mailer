@@ -49,7 +49,7 @@ Amacı, yüzlerce müşteriye kişiselleştirilmiş e-posta kampanyalarını gü
 ### 4.CSV ile Müşteri Ekleme
 
 Çok sayıda müşteri CSV dosyası aracılığıyla eklenebilir.
-[Import CSV](screenshots/import-csv.png)
+![Import CSV](screenshots/import-csv.png)
 
 ---
 

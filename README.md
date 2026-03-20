@@ -35,33 +35,36 @@ Amacı, yüzlerce müşteriye kişiselleştirilmiş e-posta kampanyalarını gü
 - SMTP hesaplarını ekleyebilir, silebilir veya günlük limitlerini sıfırlayabilirsiniz.  
 - Hesaplar grafik ve tablo ile gösterilir, limit dolduğunda otomatik dağıtım yapılır.  
 
-![SMTP Management](screenshots/smtp_management.png)
+![SMTP Management](screenshots/smtp.png)
 
 ---
 
 ### 3. Müşteri Portföyü
 - Sistemde kayıtlı tüm müşteriler listelenir.  
-- CSV dosyasıyla çok sayıda müşteri eklenebilir.  
 
-![Customer Portfolio](screenshots/customers.png)
+![Customer Portfolio](screenshots/customers-list.png)
 
 ---
 
-### 4. Mail Gönderimi
+### 4.CSV ile Müşteri Ekleme
+
+Çok sayıda müşteri CSV dosyası aracılığıyla eklenebilir.
+
+### 5. Mail Gönderimi
 - Kişiye özel veya toplu e-posta gönderimi yapılabilir.  
 - Mail içeriği HTML olarak hazırlanabilir ve önizleme yapılabilir.  
 - Uygulama, uygun SMTP hesabını otomatik seçerek gönderimi dengeli dağıtır.  
 
-![Send Mail](screenshots/send_mail.png)
+![Send Mail](screenshots/send-mail.png)
 
 ---
 
-### 5. Başarılı Gönderim (Success Screen)
+### 6. Başarılı Gönderim (Success Screen)
 ![Success](screenshots/success.png)
 
 ---
 
-### 6. Müşteri Listesi (Customer List)
+### 7. Müşteri Listesi (Customer List)
 ![Customer List](screenshots/customer-list.png)
 
 ---

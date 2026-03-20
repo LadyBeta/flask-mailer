@@ -1,0 +1,89 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <form action="/send-mail" method="POST" class="flex flex-col lg:flex-row gap-8">
+        
+        <div class="flex-1 bg-white p-8 rounded-3xl shadow-sm border border-purple-50">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 bg-purple-100 rounded-full">
+                    <i class="fas fa-paper-plane kite-purple"></i>
+                </div>
+                <h2 class="brand-font text-3xl text-gray-800">Kampanyayı Hazırla</h2>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-600 mb-2">E-posta Konusu</label>
+                    <input type="text" name="subject" 
+                           value="KITE Floral | Size Özel Bir Sürprizimiz Var! 🌸" 
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-400 focus:ring-2 focus:ring-purple-100 outline-none transition-all"
+                           required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-600 mb-2">Mesaj İçeriği</label>
+                    <textarea name="body" id="editor1">
+                        <h1 style="color: #a78bfa;">Merhaba {{name}},</h1>
+                        <p>KITE Butik'in taze dünyasından size harika bir haberimiz var!</p>
+                    </textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" 
+                            class="w-full kite-bg-purple text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-purple-600 transition-all transform hover:-translate-y-1">
+                        Uçurtmayı Havalandır 
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-80 bg-white p-6 rounded-3xl shadow-sm border border-purple-50 h-[650px] flex flex-col">
+            <h3 class="font-bold text-gray-700 mb-4 flex justify-between items-center">
+                Alıcı Seçimi
+                <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-lg">{{ contacts|length }} Kişi</span>
+            </h3>
+            
+            <label class="flex items-center gap-2 mb-4 p-2 bg-gray-50 rounded-lg cursor-pointer">
+                <input type="checkbox" id="selectAll" class="rounded text-purple-600" checked>
+                <span class="text-sm font-bold text-gray-600">Tümünü Seç</span>
+            </label>
+
+            <div class="flex-1 overflow-y-auto space-y-2 pr-2 custom-scrollbar">
+                {% for contact in contacts %}
+                <label class="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl hover:border-purple-200 cursor-pointer transition-all">
+                    <input type="checkbox" name="selected_contacts" value="{{ contact.id }}" 
+                           class="contact-checkbox rounded text-purple-600" checked>
+                    <div class="truncate">
+                        <p class="text-sm font-medium text-gray-700 truncate">{{ contact.name }}</p>
+                        <p class="text-[10px] text-gray-400 truncate">{{ contact.email }}</p>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+<script>
+    var editor = CKEDITOR.replace('editor1', {
+        uiColor: '#f5f3ff',
+        height: 350,
+        removeButtons: 'About,Maximize,Source'
+    });
+
+    document.querySelector('form').onsubmit = function() {
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+    };
+
+    document.getElementById('selectAll').onclick = function() {
+        let checkboxes = document.getElementsByClassName('contact-checkbox');
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KITE | Çiçek Butiği Yönetim Paneli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .brand-font { font-family: 'Playfair Display', serif; }
+        .gradient-bg { background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
+        .kite-purple { color: #a78bfa; }
+        .kite-bg-purple { background-color: #a78bfa; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-gray-700">
+
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10L85 45L50 80L15 45L50 10Z" stroke="#a78bfa" stroke-width="3" fill="#f5f3ff"/>
+                    <path d="M50 10V80" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 4"/>
+                    <path d="M15 45H85" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 4"/>
+                    <path d="M50 80C50 80 60 85 60 92C60 95 58 97 55 97" stroke="#fb7185" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="brand-font text-3xl tracking-widest kite-purple uppercase">KITE</span>
+            </div>
+
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="/dashboard" class="hover:text-purple-500 transition-colors">Özet</a>
+                <a href="/contacts" class="hover:text-purple-500 transition-colors">Müşteriler</a>
+                <a href="/smtp-accounts" class="hover:text-purple-500 transition-colors">SMTP Servisleri</a>
+                <a href="/import-contacts" class="hover:text-purple-500 transition-colors">Müşteri Yükle</a>
+            </div>
+
+            <a href="/send-mail" class="kite-bg-purple text-white px-6 py-2 rounded-full font-semibold shadow-lg shadow-purple-200 hover:bg-purple-600 transition-all flex items-center gap-2">
+                <i class="fas fa-paper-plane text-xs"></i>
+                Mail Gönder
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-6 mt-6">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="fade-in mb-4 p-4 rounded-2xl shadow-lg border flex items-center justify-between gap-3
+                   {% if category == 'success' %} bg-green-50 border-green-200 text-green-700 {% else %} bg-red-50 border-red-200 text-red-700 {% endif %}">
+                <div class="flex items-center gap-3">
+                    <i class="fas {% if category == 'success' %} fa-check-circle {% else %} fa-exclamation-circle {% endif %} text-xl"></i>
+                    <span class="font-medium">{{ message }}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="opacity-50 hover:opacity-100 transition-opacity">
+                    <i class="fas fa-times"></i>
+                </button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <main class="container mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-purple-50">
+                <p class="text-sm text-gray-400 uppercase tracking-wider">Kayıtlı Müşteri</p>
+                <h3 class="text-3xl font-bold mt-1">Sistem Hazır</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-50">
+                <p class="text-sm text-gray-400 uppercase tracking-wider">Durum</p>
+                <h3 class="text-3xl font-bold mt-1 text-pink-400 font-medium">Bulutlarda</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-purple-50">
+                <p class="text-sm text-gray-400 uppercase tracking-wider">Güvenlik</p>
+                <h3 class="text-3xl font-bold mt-1 text-green-400">Şifreli</h3>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="text-center py-10 text-gray-400 text-sm">
+        &copy; 2025 KITE Floral Marketing Tool | Çiçek Butiğinizin Kanatları
+    </footer>
+</body>
+</html>

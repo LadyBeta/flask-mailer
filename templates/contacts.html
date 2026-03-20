@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded-3xl shadow-sm border border-purple-50 overflow-hidden">
+    <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-white">
+        <div>
+            <h2 class="brand-font text-2xl text-gray-800">Müşteri Portföyü</h2>
+            <p class="text-sm text-gray-400">Toplam {{ contacts|length }} kayıtlı çiçeksever</p>
+        </div>
+        <div class="flex gap-3">
+           
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 text-gray-400 text-xs uppercase tracking-widest">
+                    <th class="px-8 py-4 font-semibold">Müşteri Bilgisi</th>
+                    <th class="px-8 py-4 font-semibold">E-Posta Adresi</th>
+                    <th class="px-8 py-4 font-semibold text-center">Durum</th>
+                   
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                {% for contact in contacts %}
+                <tr class="hover:bg-purple-50/30 transition-colors group">
+                    <td class="px-8 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-100 to-pink-100 flex items-center justify-center text-purple-600 font-bold">
+                                {{ contact.name[0] | upper }}
+                            </div>
+                            <span class="font-medium text-gray-700">{{ contact.name }}</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-5">
+                        <span class="text-sm text-gray-500 font-mono">{{ contact.email }}</span>
+                    </td>
+                    <td class="px-8 py-5 text-center">
+                        <span class="px-3 py-1 bg-green-100 text-green-600 text-xs font-bold rounded-full">
+                            AKTİF
+                        </span>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

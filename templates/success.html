@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-xl mx-auto text-center py-20 bg-white rounded-3xl shadow-sm border border-purple-50 mt-10">
+    <div class="mb-6 relative inline-block">
+        <div class="text-6xl animate-bounce">
+            <i class="fas fa-paper-plane kite-purple"></i>
+        </div>
+        <div class="absolute -top-2 -right-2 w-4 h-4 bg-pink-400 rounded-full animate-ping"></div>
+    </div>
+    
+    <h1 class="brand-font text-4xl text-gray-800 mb-4 uppercase tracking-widest">Uçurtmalar Havalandı!</h1>
+    <p class="text-gray-500 mb-10 px-10">Kampanyanız başarıyla SMTP rüzgarına bırakıldı. Müşterileriniz en taze çiçek haberlerini almak üzere.</p>
+    
+    <div class="flex flex-col gap-3 items-center">
+        <a href="/dashboard" class="kite-bg-purple text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-purple-600 transition-all w-64">
+            Panele Dön
+        </a>
+        <a href="/send-mail" class="text-purple-400 hover:text-purple-600 font-medium text-sm transition-all border-b border-transparent hover:border-purple-600">
+            Yeni Bir Mail Gönder
+        </a>
+    </div>
+</div>
+{% endblock %}

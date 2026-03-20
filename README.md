@@ -42,7 +42,7 @@ Amacı, yüzlerce müşteriye kişiselleştirilmiş e-posta kampanyalarını gü
 ### 3. Müşteri Portföyü
 - Sistemde kayıtlı tüm müşteriler listelenir.  
 
-![Customer Portfolio](screenshots/customers-list.png)
+![Customer List](screenshots/customers-list.png)
 
 ---
 
@@ -64,10 +64,6 @@ Amacı, yüzlerce müşteriye kişiselleştirilmiş e-posta kampanyalarını gü
 
 ---
 
-### 7. Müşteri Listesi (Customer List)
-![Customer List](screenshots/customer-list.png)
-
----
 
 ## Kurulum ve Kullanım
 
